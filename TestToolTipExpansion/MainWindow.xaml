@@ -13,7 +13,7 @@
 		<Button Content="Button" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Width="75">
 			<Button.ToolTip>
 				<ToolTip local:ToolTipExtensions.IsExpandable="True">
-					<StackPanel PreviewKeyDown="StackPanel_PreviewKeyDown">
+					<StackPanel>
 						<TextBlock Text="This is the short version of the tooltip" />
 						<TextBlock Text="This is the long part of the tooltip that only appears after pressing Ctrl key."
 							Visibility="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=(local:ToolTipExtensions.IsExpanded), Converter={StaticResource BooleanToVisibilityConverter}}" />
