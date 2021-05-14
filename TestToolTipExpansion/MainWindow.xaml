@@ -1,0 +1,25 @@
+﻿<Window x:Class="TestToolTipExpansion.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestToolTipExpansion"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="250" Width="400">
+	<Window.Resources>
+		<BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+	</Window.Resources>
+    <Grid>
+		<Button Content="Button" HorizontalAlignment="Left" Margin="50,50,0,0" VerticalAlignment="Top" Width="75">
+			<Button.ToolTip>
+				<ToolTip local:ToolTipExtensions.IsExpandable="True">
+					<StackPanel PreviewKeyDown="StackPanel_PreviewKeyDown">
+						<TextBlock Text="This is the short version of the tooltip" />
+						<TextBlock Text="This is the long part of the tooltip that only appears after pressing Ctrl key."
+							Visibility="{Binding RelativeSource={RelativeSource AncestorType=ToolTip}, Path=(local:ToolTipExtensions.IsExpanded), Converter={StaticResource BooleanToVisibilityConverter}}" />
+					</StackPanel>
+				</ToolTip>
+			</Button.ToolTip>
+		</Button>
+	</Grid>
+</Window>
